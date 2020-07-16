@@ -1,0 +1,80 @@
+object ConversaSessaoItemView: TConversaSessaoItemView
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 640
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object lytConversaSessaoItemView: TLayout
+    Align = Client
+    ClipChildren = True
+    Size.Width = 640.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object rctgConversaSessaoItemView: TRectangle
+      Align = Client
+      ClipChildren = True
+      Fill.Color = claWhite
+      Size.Width = 640.000000000000000000
+      Size.Height = 480.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object lytSessaoClient: TLayout
+        Align = Client
+        ClipChildren = True
+        Size.Width = 640.000000000000000000
+        Size.Height = 480.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object tbcSessao: TTabControl
+          Align = Client
+          ClipChildren = True
+          Size.Width = 640.000000000000000000
+          Size.Height = 480.000000000000000000
+          Size.PlatformDefault = False
+          TabIndex = 1
+          TabOrder = 0
+          TabPosition = None
+          Sizes = (
+            640s
+            480s
+            640s
+            480s)
+          object tiConversasLista: TTabItem
+            CustomIcon = <
+              item
+              end>
+            IsSelected = False
+            Size.Width = 8.000000000000000000
+            Size.Height = 8.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = ''
+            TabOrder = 0
+            Text = 'tiConversasLista'
+            ExplicitSize.cx = 8.000000000000000000
+            ExplicitSize.cy = 8.000000000000000000
+          end
+          object tiConversasItem: TTabItem
+            CustomIcon = <
+              item
+              end>
+            IsSelected = True
+            Size.Width = 8.000000000000000000
+            Size.Height = 8.000000000000000000
+            Size.PlatformDefault = False
+            StyleLookup = ''
+            TabOrder = 0
+            Text = 'tiConversasItem'
+            ExplicitSize.cx = 8.000000000000000000
+            ExplicitSize.cy = 8.000000000000000000
+          end
+        end
+      end
+    end
+  end
+end

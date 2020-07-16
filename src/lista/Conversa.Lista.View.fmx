@@ -1,0 +1,55 @@
+object ConversaListaView: TConversaListaView
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 500
+  ClientWidth = 300
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object lytForm_Conversas: TLayout
+    Align = Client
+    Size.Width = 300.000000000000000000
+    Size.Height = 500.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object rctgBackground: TRectangle
+      Align = Client
+      Fill.Color = claWhite
+      Size.Width = 300.000000000000000000
+      Size.Height = 500.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object vsbItems: TVertScrollBox
+        Align = Client
+        Size.Width = 300.000000000000000000
+        Size.Height = 500.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        OnResize = vsbItemsResize
+        Viewport.Width = 300.000000000000000000
+        Viewport.Height = 500.000000000000000000
+        object lytItems: TLayout
+          ClipChildren = True
+          Size.Width = 300.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+        end
+      end
+    end
+    object Button1: TButton
+      Align = Top
+      Size.Width = 300.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Button1'
+      Visible = False
+      OnClick = Button1Click
+    end
+  end
+end

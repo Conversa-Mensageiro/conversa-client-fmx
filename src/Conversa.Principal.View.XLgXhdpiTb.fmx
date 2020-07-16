@@ -1,0 +1,76 @@
+inherited PrincipalView_XLgXhdpiTb: TPrincipalView_XLgXhdpiTb
+  ClientHeight = 1255
+  ClientWidth = 800
+  DesignerMasterStyle = 0
+  inherited lytForm: TLayout
+    Size.Width = 800.000000000000000000
+    Size.Height = 1255.000000000000000000
+    inherited rctBackground: TRectangle
+      Size.Width = 550.000000000000000000
+      Size.Height = 1255.000000000000000000
+      inherited lytBarraTopo: TLayout
+        Size.Width = 550.000000000000000000
+        inherited rctBarraTopo: TRectangle
+          Size.Width = 550.000000000000000000
+        end
+        inherited lytClientBarraTopo: TLayout
+          Size.Width = 538.000000000000000000
+          inherited lytPesquisa: TLayout
+            Size.Width = 478.000000000000000000
+            inherited RoundRect1: TRoundRect
+              Size.Width = 478.000000000000000000
+              inherited lytEdtPesquisa: TLayout
+                Size.Width = 466.000000000000000000
+                inherited edtPesquisa: TEdit
+                  Size.Width = 466.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  inherited lbEditPesquisaPrompt: TLabel
+                    Size.Width = 137.000000000000000000
+                    Size.Height = 32.000000000000000000
+                  end
+                end
+              end
+            end
+          end
+          inherited SpeedButton1: TSpeedButton
+            Size.Width = 48.000000000000000000
+            Size.Height = 48.000000000000000000
+          end
+        end
+      end
+      inherited lytClientSessoes: TLayout
+        Size.Width = 550.000000000000000000
+        Size.Height = 1195.000000000000000000
+      end
+    end
+    inherited MultiView1: TMultiView
+      Size.Height = 1255.000000000000000000
+      inherited lytMenu: TLayout
+        Size.Height = 1255.000000000000000000
+        inherited Rectangle1: TRectangle
+          Size.Height = 1255.000000000000000000
+          inherited lytInformacoesUsuario_Client: TLayout
+            Margins.Left = 6.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 6.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 6.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 238.000000000000000000
+            inherited lytInformacoesUsuario: TLayout
+              Size.Width = 172.000000000000000000
+              inherited lytNomeUsuario: TLayout
+                Size.Width = 172.000000000000000000
+                inherited lblNomeUsuario: TLabel
+                  Size.Width = 172.000000000000000000
+                  TextSettings.Font.Family = '15'
+                  TextSettings.Font.StyleExt = {00070000000000000004000000}
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

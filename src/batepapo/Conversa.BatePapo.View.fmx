@@ -1,0 +1,289 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 500
+  ClientWidth = 400
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object lytForm: TLayout
+    Align = Client
+    Size.Width = 400.000000000000000000
+    Size.Height = 500.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object rctgForm: TRectangle
+      Align = Client
+      Fill.Color = claWhite
+      Size.Width = 400.000000000000000000
+      Size.Height = 500.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Kind = None
+      object lytTopTitle: TLayout
+        Align = Top
+        Size.Width = 400.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object rctgTitle: TRectangle
+          Align = Client
+          Fill.Color = xFF2F2F2F
+          Size.Width = 400.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+          object lytBtnVoltar: TLayout
+            Align = Left
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 3.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 50.000000000000000000
+            Size.Height = 44.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object btnVoltar: TSpeedButton
+              Align = Client
+              Size.Width = 50.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'arrowlefttoolbutton'
+              Text = 'btnVoltar'
+            end
+          end
+          object lytInformacoesChat_Client: TLayout
+            Align = Client
+            Margins.Left = 3.000000000000000000
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Size.Width = 227.000000000000000000
+            Size.Height = 44.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object lytFotoChat: TLayout
+              Align = Left
+              Size.Width = 50.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              object crclFotoChat: TCircle
+                Align = Client
+                Size.Width = 50.000000000000000000
+                Size.Height = 44.000000000000000000
+                Size.PlatformDefault = False
+                Stroke.Kind = None
+              end
+            end
+            object lytInformacoesChat: TLayout
+              Align = Client
+              Size.Width = 177.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object Layout4: TLayout
+                Align = Client
+                Margins.Left = 3.000000000000000000
+                Margins.Top = 3.000000000000000000
+                Margins.Right = 3.000000000000000000
+                Margins.Bottom = 3.000000000000000000
+                Size.Width = 171.000000000000000000
+                Size.Height = 19.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                object lblChat_Title: TLabel
+                  Align = Client
+                  StyledSettings = [Style]
+                  Size.Width = 171.000000000000000000
+                  Size.Height = 19.000000000000000000
+                  Size.PlatformDefault = False
+                  TextSettings.Font.Size = 15.000000000000000000
+                  TextSettings.FontColor = claKhaki
+                  Text = 'lblChat_Title'
+                  TabOrder = 0
+                end
+              end
+              object Layout5: TLayout
+                Align = Bottom
+                Margins.Left = 3.000000000000000000
+                Margins.Right = 3.000000000000000000
+                Margins.Bottom = 3.000000000000000000
+                Position.X = 3.000000000000000000
+                Position.Y = 25.000000000000000000
+                Size.Width = 171.000000000000000000
+                Size.Height = 16.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
+                object lblChat_Info: TLabel
+                  Align = Client
+                  AutoSize = True
+                  Size.Width = 171.000000000000000000
+                  Size.Height = 16.000000000000000000
+                  Size.PlatformDefault = False
+                  Text = 'lblChat_Info'
+                  TabOrder = 1
+                end
+              end
+            end
+          end
+          object lytBotoesTopo_Direita: TLayout
+            Align = Right
+            Margins.Top = 3.000000000000000000
+            Margins.Right = 3.000000000000000000
+            Margins.Bottom = 3.000000000000000000
+            Position.X = 286.000000000000000000
+            Position.Y = 3.000000000000000000
+            Size.Width = 111.000000000000000000
+            Size.Height = 44.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            object btnMaisOpcoes: TSpeedButton
+              Align = Right
+              Position.X = 74.000000000000000000
+              Size.Width = 37.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'ellipseseditbutton'
+              Text = 'btnMaisOpcoes'
+            end
+            object btnLigacao: TSpeedButton
+              Align = Right
+              Position.X = 37.000000000000000000
+              Size.Width = 37.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'ellipseseditbutton'
+              Text = 'btnMaisOpcoes'
+            end
+            object btnVideoChamada: TSpeedButton
+              Align = Right
+              Size.Width = 37.000000000000000000
+              Size.Height = 44.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'ellipseseditbutton'
+              Text = 'btnMaisOpcoes'
+            end
+          end
+        end
+      end
+      object lytButtonInput: TLayout
+        Align = Bottom
+        Position.Y = 450.000000000000000000
+        Size.Width = 400.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object Rectangle1: TRectangle
+          Align = Client
+          Fill.Color = xFF2F2F2F
+          Size.Width = 400.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Kind = None
+        end
+        object lytInputEdit: TLayout
+          Align = Client
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 6.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 6.000000000000000000
+          Size.Width = 394.000000000000000000
+          Size.Height = 38.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          object RoundRect1: TRoundRect
+            Align = Client
+            Size.Width = 394.000000000000000000
+            Size.Height = 38.000000000000000000
+            Size.PlatformDefault = False
+            object Layout2: TLayout
+              Align = Client
+              Margins.Left = 6.000000000000000000
+              Margins.Top = 3.000000000000000000
+              Margins.Right = 6.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 382.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              object Edit1: TEdit
+                Touch.InteractiveGestures = [LongTap, DoubleTap]
+                Align = Client
+                StyleLookup = 'transparentedit'
+                TabOrder = 0
+                Margins.Left = 3.000000000000000000
+                Margins.Top = 3.000000000000000000
+                Margins.Right = 3.000000000000000000
+                Margins.Bottom = 3.000000000000000000
+                Size.Width = 326.000000000000000000
+                Size.Height = 26.000000000000000000
+                Size.PlatformDefault = False
+                TextPrompt = 'Escrever uma mensagem...'
+              end
+              object Layout3: TLayout
+                Align = Left
+                Size.Width = 50.000000000000000000
+                Size.Height = 32.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 1
+                object SpeedButton1: TSpeedButton
+                  Align = Client
+                  Size.Width = 50.000000000000000000
+                  Size.Height = 32.000000000000000000
+                  Size.PlatformDefault = False
+                  StyleLookup = 'searchtoolbutton'
+                  Text = 'SpeedButton1'
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+    object Button1: TButton
+      Position.X = 152.000000000000000000
+      Position.Y = 128.000000000000000000
+      TabOrder = 1
+      Text = 'Button1'
+      Visible = False
+    end
+    object Layout1: TLayout
+      Align = Center
+      Visible = False
+      TabOrder = 2
+      object Circle1: TCircle
+        Align = Client
+        Size.Width = 50.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        OnMouseDown = Circle1MouseDown
+        object Circle2: TCircle
+          ClipChildren = True
+          Fill.Color = xFFFBB1B1
+          Position.X = 24.000000000000000000
+          Position.Y = 24.000000000000000000
+          Size.Width = 50.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          Visible = False
+          object MinhaNovaAnimacao: TFloatAnimation
+            Duration = 0.100000001490116100
+            OnProcess = MinhaNovaAnimacaoProcess
+            OnFinish = MinhaNovaAnimacaoFinish
+            PropertyName = 'Size.Height'
+            StartValue = 0.000000000000000000
+            StopValue = 500.000000000000000000
+            Trigger = 'IsVisible=true'
+          end
+          object MaskToAlphaEffect1: TMaskToAlphaEffect
+          end
+        end
+      end
+    end
+  end
+end
