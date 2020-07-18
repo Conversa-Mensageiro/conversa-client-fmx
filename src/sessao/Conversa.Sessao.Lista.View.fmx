@@ -4,17 +4,21 @@ object ConversaSessaoListaView: TConversaSessaoListaView
   Size.PlatformDefault = False
   object lytConversaSessaoListaView: TLayout
     Align = Client
+    ClipChildren = True
     Size.Width = 674.000000000000000000
     Size.Height = 445.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object rctgConversaSessaoListaView: TRectangle
       Align = Client
-      Fill.Color = claWhite
+      Corners = [TopLeft]
+      Fill.Color = claWheat
       Size.Width = 674.000000000000000000
       Size.Height = 445.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
+      XRadius = 20.000000000000000000
+      YRadius = 20.000000000000000000
     end
     object lytSessoes: TLayout
       Align = Client
@@ -25,9 +29,11 @@ object ConversaSessaoListaView: TConversaSessaoListaView
       TabOrder = 1
       object tbcSessoes: TTabControl
         Align = Client
+        ClipChildren = True
         Size.Width = 674.000000000000000000
         Size.Height = 445.000000000000000000
         Size.PlatformDefault = False
+        StyleLookup = 'tabcontrolstyle'
         TabOrder = 0
         TabPosition = None
       end

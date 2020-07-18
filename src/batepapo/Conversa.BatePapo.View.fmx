@@ -1,4 +1,4 @@
-object Form2: TForm2
+object ConversaBatePapoView: TConversaBatePapoView
   Left = 0
   Top = 0
   Caption = 'Form2'
@@ -18,6 +18,7 @@ object Form2: TForm2
     TabOrder = 0
     object rctgForm: TRectangle
       Align = Client
+      ClipChildren = True
       Fill.Color = claWhite
       Size.Width = 400.000000000000000000
       Size.Height = 500.000000000000000000
@@ -26,14 +27,14 @@ object Form2: TForm2
       object lytTopTitle: TLayout
         Align = Top
         Size.Width = 400.000000000000000000
-        Size.Height = 50.000000000000000000
+        Size.Height = 60.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         object rctgTitle: TRectangle
           Align = Client
-          Fill.Color = xFF2F2F2F
+          Fill.Color = xFF4285F4
           Size.Width = 400.000000000000000000
-          Size.Height = 50.000000000000000000
+          Size.Height = 60.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           object lytBtnVoltar: TLayout
@@ -44,13 +45,13 @@ object Form2: TForm2
             Position.X = 3.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 50.000000000000000000
-            Size.Height = 44.000000000000000000
+            Size.Height = 54.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
             object btnVoltar: TSpeedButton
               Align = Client
               Size.Width = 50.000000000000000000
-              Size.Height = 44.000000000000000000
+              Size.Height = 54.000000000000000000
               Size.PlatformDefault = False
               StyleLookup = 'arrowlefttoolbutton'
               Text = 'btnVoltar'
@@ -63,19 +64,19 @@ object Form2: TForm2
             Margins.Right = 3.000000000000000000
             Margins.Bottom = 3.000000000000000000
             Size.Width = 227.000000000000000000
-            Size.Height = 44.000000000000000000
+            Size.Height = 54.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 1
             object lytFotoChat: TLayout
               Align = Left
               Size.Width = 50.000000000000000000
-              Size.Height = 44.000000000000000000
+              Size.Height = 54.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 0
               object crclFotoChat: TCircle
                 Align = Client
                 Size.Width = 50.000000000000000000
-                Size.Height = 44.000000000000000000
+                Size.Height = 54.000000000000000000
                 Size.PlatformDefault = False
                 Stroke.Kind = None
               end
@@ -83,7 +84,7 @@ object Form2: TForm2
             object lytInformacoesChat: TLayout
               Align = Client
               Size.Width = 177.000000000000000000
-              Size.Height = 44.000000000000000000
+              Size.Height = 54.000000000000000000
               Size.PlatformDefault = False
               TabOrder = 1
               object Layout4: TLayout
@@ -93,14 +94,14 @@ object Form2: TForm2
                 Margins.Right = 3.000000000000000000
                 Margins.Bottom = 3.000000000000000000
                 Size.Width = 171.000000000000000000
-                Size.Height = 19.000000000000000000
+                Size.Height = 29.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
                 object lblChat_Title: TLabel
                   Align = Client
                   StyledSettings = [Style]
                   Size.Width = 171.000000000000000000
-                  Size.Height = 19.000000000000000000
+                  Size.Height = 29.000000000000000000
                   Size.PlatformDefault = False
                   TextSettings.Font.Size = 15.000000000000000000
                   TextSettings.FontColor = claKhaki
@@ -114,7 +115,7 @@ object Form2: TForm2
                 Margins.Right = 3.000000000000000000
                 Margins.Bottom = 3.000000000000000000
                 Position.X = 3.000000000000000000
-                Position.Y = 25.000000000000000000
+                Position.Y = 35.000000000000000000
                 Size.Width = 171.000000000000000000
                 Size.Height = 16.000000000000000000
                 Size.PlatformDefault = False
@@ -139,14 +140,14 @@ object Form2: TForm2
             Position.X = 286.000000000000000000
             Position.Y = 3.000000000000000000
             Size.Width = 111.000000000000000000
-            Size.Height = 44.000000000000000000
+            Size.Height = 54.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
             object btnMaisOpcoes: TSpeedButton
               Align = Right
               Position.X = 74.000000000000000000
               Size.Width = 37.000000000000000000
-              Size.Height = 44.000000000000000000
+              Size.Height = 54.000000000000000000
               Size.PlatformDefault = False
               StyleLookup = 'ellipseseditbutton'
               Text = 'btnMaisOpcoes'
@@ -155,7 +156,7 @@ object Form2: TForm2
               Align = Right
               Position.X = 37.000000000000000000
               Size.Width = 37.000000000000000000
-              Size.Height = 44.000000000000000000
+              Size.Height = 54.000000000000000000
               Size.PlatformDefault = False
               StyleLookup = 'ellipseseditbutton'
               Text = 'btnMaisOpcoes'
@@ -163,7 +164,7 @@ object Form2: TForm2
             object btnVideoChamada: TSpeedButton
               Align = Right
               Size.Width = 37.000000000000000000
-              Size.Height = 44.000000000000000000
+              Size.Height = 54.000000000000000000
               Size.PlatformDefault = False
               StyleLookup = 'ellipseseditbutton'
               Text = 'btnMaisOpcoes'
@@ -180,11 +181,14 @@ object Form2: TForm2
         TabOrder = 1
         object Rectangle1: TRectangle
           Align = Client
-          Fill.Color = xFF2F2F2F
+          Corners = [TopLeft]
+          Fill.Color = xFF004080
           Size.Width = 400.000000000000000000
           Size.Height = 50.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
+          XRadius = 20.000000000000000000
+          YRadius = 20.000000000000000000
         end
         object lytInputEdit: TLayout
           Align = Client
@@ -254,6 +258,7 @@ object Form2: TForm2
     end
     object Layout1: TLayout
       Align = Center
+      ClipChildren = True
       Visible = False
       TabOrder = 2
       object Circle1: TCircle

@@ -36,14 +36,29 @@ type
     vsbItems: TVertScrollBox;
     lytItems: TLayout;
     Button1: TButton;
+    lytBarraTopo: TLayout;
+    rctBarraTopo: TRectangle;
+    lytClientBarraTopo: TLayout;
+    lytFotoPerfilConta: TLayout;
+    Circle1: TCircle;
+    lytPesquisa: TLayout;
+    RoundRect1: TRoundRect;
+    lytEdtPesquisa: TLayout;
+    edtPesquisa: TEdit;
+    lbEditPesquisaPrompt: TLabel;
+    SpeedButton1: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure vsbItemsResize(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure edtPesquisaEnter(Sender: TObject);
+    procedure edtPesquisaExit(Sender: TObject);
+    procedure edtPesquisaChange(Sender: TObject);
   private
     { Private declarations }
     FConversaListaController: TConversaListaController;
     FConversas: TDictionary<Double, TConversaItemFrame>;
+    FAoAbrirBatePapo: TProc<Double>;
     procedure CorrigirPosicaoLayoutItems;
     procedure CorrigirAlturaLayoutItems;
     procedure LimparLista;
@@ -51,6 +66,7 @@ type
     { Public declarations }
     constructor Create(AOwner: TComponent; AConexaoBancoDados: TConversaConexaoBancoDados); reintroduce; overload;
     procedure CarregarConversas;
+    function AoAbrirBatePapo(pAoAbrirConversa: TProc<Double>): TConversaListaView;
   end;
 
 var
@@ -66,6 +82,27 @@ constructor TConversaListaView.Create(AOwner: TComponent; AConexaoBancoDados: TC
 begin
   inherited Create(AOwner);
   FConversaListaController := TConversaListaController.Create(Self, AConexaoBancoDados);
+end;
+
+procedure TConversaListaView.edtPesquisaChange(Sender: TObject);
+begin
+  lbEditPesquisaPrompt.Visible := edtPesquisa.Text.Trim.IsEmpty;
+end;
+
+procedure TConversaListaView.edtPesquisaEnter(Sender: TObject);
+begin
+  lbEditPesquisaPrompt.Visible := False;
+end;
+
+procedure TConversaListaView.edtPesquisaExit(Sender: TObject);
+begin
+  lbEditPesquisaPrompt.Visible := edtPesquisa.Text.Trim.IsEmpty;
+end;
+
+function TConversaListaView.AoAbrirBatePapo(pAoAbrirConversa: TProc<Double>): TConversaListaView;
+begin
+  Result := Self;
+  FAoAbrirBatePapo := pAoAbrirConversa;
 end;
 
 procedure TConversaListaView.Button1Click(Sender: TObject);
@@ -102,7 +139,8 @@ begin
         .Descricao(FieldByName('descricao').AsString)
         .Mensagem(FieldByName('conteudo').AsString)
         .DataConversa(FieldByName('data').AsDateTime)
-        .Qtd(FieldByName('qtd').AsInteger);
+        .Qtd(FieldByName('qtd').AsInteger)
+        .AoAbrirBatePapo(FAoAbrirBatePapo);
 
       CorrigirPosicaoLayoutItems;
       CorrigirAlturaLayoutItems;

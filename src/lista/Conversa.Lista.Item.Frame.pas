@@ -7,7 +7,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   FMX.Objects, FMX.Layouts, FMX.Controls.Presentation, FMX.Ani, FMX.Gestures, System.DateUtils,
-  FMX.TextLayout;
+  FMX.TextLayout, System.Actions, FMX.ActnList;
 
 type
   TConversaItemFrame = class(TFrame)
@@ -36,8 +36,14 @@ type
     Layout2: TLayout;
     Circle1: TCircle;
     FloatAnimation3: TFloatAnimation;
+    ActionList1: TActionList;
+    Action1: TAction;
     procedure lblMensagemGesture(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
     procedure Panel1Gesture(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
+    procedure lblMensagemClick(Sender: TObject);
+    procedure lytItemConversaClick(Sender: TObject);
+    procedure lytItemConversaGesture(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
+    procedure Action1Execute(Sender: TObject);
   private type
     TContadorStatus = (Nenhum, Exibindo, Exibido, Ocultando, Oculto);
   private
@@ -48,6 +54,7 @@ type
     FMensagem: String;
     FQtd: Integer;
     FContadorStatus: TContadorStatus;
+    FAoAbrirBatePapo: TProc<Double>;
     procedure ContadorExibir;
     procedure ContadorOcultar;
     function MeasureText(const sText: string; const tsTextSettings: TTextSettings): TRectF;
@@ -64,6 +71,7 @@ type
     function Qtd(Value: Integer): TConversaItemFrame; overload;
     function Qtd: Integer; overload;
     function AtualizarFotoConversa(bmp: TBitmap): TConversaItemFrame;
+    function AoAbrirBatePapo(pAoAbrirConversa: TProc<Double>): TConversaItemFrame;
   end;
 
 implementation
@@ -83,7 +91,26 @@ begin
   Result := FID;
 end;
 
+procedure TConversaItemFrame.lblMensagemClick(Sender: TObject);
+begin
+  ShowMessage('Ok');
+end;
+
 procedure TConversaItemFrame.lblMensagemGesture(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
+begin
+  if EventInfo.GestureID = System.UITypes.igiLongTap then
+  begin
+    ShowMessage('Clique longo!');
+  end;
+end;
+
+procedure TConversaItemFrame.lytItemConversaClick(Sender: TObject);
+begin
+  if Assigned(FAoAbrirBatePapo) then
+    FAoAbrirBatePapo(FID);
+end;
+
+procedure TConversaItemFrame.lytItemConversaGesture(Sender: TObject; const EventInfo: TGestureEventInfo; var Handled: Boolean);
 begin
   if EventInfo.GestureID = System.UITypes.igiLongTap then
   begin
@@ -162,6 +189,17 @@ end;
 function TConversaItemFrame.Qtd: Integer;
 begin
   Result := FQtd;
+end;
+
+procedure TConversaItemFrame.Action1Execute(Sender: TObject);
+begin
+  ShowMessage('Clique longo!');
+end;
+
+function TConversaItemFrame.AoAbrirBatePapo(pAoAbrirConversa: TProc<Double>): TConversaItemFrame;
+begin
+  Result := Self;
+  FAoAbrirBatePapo := pAoAbrirConversa;
 end;
 
 function TConversaItemFrame.AtualizarFotoConversa(bmp: TBitmap): TConversaItemFrame;

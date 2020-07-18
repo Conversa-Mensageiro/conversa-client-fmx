@@ -8,39 +8,9 @@ inherited PrincipalView_XLgXhdpiTb: TPrincipalView_XLgXhdpiTb
     inherited rctBackground: TRectangle
       Size.Width = 550.000000000000000000
       Size.Height = 1255.000000000000000000
-      inherited lytBarraTopo: TLayout
-        Size.Width = 550.000000000000000000
-        inherited rctBarraTopo: TRectangle
-          Size.Width = 550.000000000000000000
-        end
-        inherited lytClientBarraTopo: TLayout
-          Size.Width = 538.000000000000000000
-          inherited lytPesquisa: TLayout
-            Size.Width = 478.000000000000000000
-            inherited RoundRect1: TRoundRect
-              Size.Width = 478.000000000000000000
-              inherited lytEdtPesquisa: TLayout
-                Size.Width = 466.000000000000000000
-                inherited edtPesquisa: TEdit
-                  Size.Width = 466.000000000000000000
-                  Size.Height = 32.000000000000000000
-                  inherited lbEditPesquisaPrompt: TLabel
-                    Size.Width = 137.000000000000000000
-                    Size.Height = 32.000000000000000000
-                  end
-                end
-              end
-            end
-          end
-          inherited SpeedButton1: TSpeedButton
-            Size.Width = 48.000000000000000000
-            Size.Height = 48.000000000000000000
-          end
-        end
-      end
       inherited lytClientSessoes: TLayout
         Size.Width = 550.000000000000000000
-        Size.Height = 1195.000000000000000000
+        Size.Height = 1255.000000000000000000
       end
     end
     inherited MultiView1: TMultiView

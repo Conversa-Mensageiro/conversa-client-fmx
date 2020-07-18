@@ -226,7 +226,7 @@
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="src\batepapo\Conversa.BatePapo.View.pas">
-            <Form>Form2</Form>
+            <Form>ConversaBatePapoView</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="src\conexao_basedados\Conversa.Conexao.Banco_Dados.pas">
@@ -262,6 +262,11 @@
         <DCCReference Include="src\sessao\Conversa.Sessao.Item.View.pas">
             <Form>ConversaSessaoItemView</Form>
             <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="src\batepapo\Conversa.BatePapo.Controller.pas">
+            <Form>ConversaBatePapoController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

@@ -32,18 +32,7 @@ uses
 type
   TPrincipalView = class(TForm)
     lytForm: TLayout;
-    lytBarraTopo: TLayout;
     rctBackground: TRectangle;
-    rctBarraTopo: TRectangle;
-    lytClientBarraTopo: TLayout;
-    lytFotoPerfilConta: TLayout;
-    Circle1: TCircle;
-    lytPesquisa: TLayout;
-    RoundRect1: TRoundRect;
-    lytEdtPesquisa: TLayout;
-    edtPesquisa: TEdit;
-    lbEditPesquisaPrompt: TLabel;
-    SpeedButton1: TSpeedButton;
     MultiView1: TMultiView;
     lytMenu: TLayout;
     Rectangle1: TRectangle;
@@ -56,8 +45,6 @@ type
     crclFotoConversa: TCircle;
     lytClientSessoes: TLayout;
     procedure FormCreate(Sender: TObject);
-    procedure edtPesquisaEnter(Sender: TObject);
-    procedure edtPesquisaExit(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure tmrMultiView_OpenTimer(Sender: TObject);
   private
@@ -77,16 +64,6 @@ implementation
 {$R *.XLgXhdpiTb.fmx ANDROID}
 
 { TPrincipalView }
-
-procedure TPrincipalView.edtPesquisaEnter(Sender: TObject);
-begin
-  lbEditPesquisaPrompt.Visible := False;
-end;
-
-procedure TPrincipalView.edtPesquisaExit(Sender: TObject);
-begin
-  lbEditPesquisaPrompt.Visible := edtPesquisa.Text.Trim.IsEmpty;
-end;
 
 procedure TPrincipalView.FormCreate(Sender: TObject);
 begin

@@ -1,4 +1,5 @@
 object ConversaItemFrame: TConversaItemFrame
+  Touch.GestureManager = GestureManager1
   Size.Width = 300.000000000000000000
   Size.Height = 60.000000000000000000
   Size.PlatformDefault = False
@@ -17,7 +18,11 @@ object ConversaItemFrame: TConversaItemFrame
       Stroke.Kind = None
     end
     object lytItemConversa: TLayout
+      Touch.GestureManager = GestureManager1
+      Touch.InteractiveGestures = [Zoom, Pan, Rotate, TwoFingerTap, PressAndTap, LongTap, DoubleTap]
+      OnGesture = lytItemConversaGesture
       Align = Client
+      HitTest = True
       Margins.Left = 6.000000000000000000
       Margins.Top = 6.000000000000000000
       Margins.Right = 6.000000000000000000
@@ -26,6 +31,7 @@ object ConversaItemFrame: TConversaItemFrame
       Size.Height = 48.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
+      OnClick = lytItemConversaClick
       object lytFotoChat: TLayout
         Align = Left
         Size.Width = 48.000000000000000000
@@ -11672,6 +11678,7 @@ object ConversaItemFrame: TConversaItemFrame
               Size.PlatformDefault = False
               Text = 'lblMensagem'
               TabOrder = 1
+              OnClick = lblMensagemClick
             end
           end
           object lytContador: TLayout
@@ -11861,6 +11868,122 @@ object ConversaItemFrame: TConversaItemFrame
           item
             GestureID = sgiChevronRight
           end>
+      end
+      item
+        Control = lytItemConversa
+        Collection = <
+          item
+            GestureID = sgiLeft
+          end
+          item
+            GestureID = sgiRight
+          end
+          item
+            GestureID = sgiUp
+          end
+          item
+            GestureID = sgiDown
+          end
+          item
+            GestureID = sgiUpLeft
+          end
+          item
+            GestureID = sgiUpRight
+          end
+          item
+            GestureID = sgiDownLeft
+          end
+          item
+            GestureID = sgiDownRight
+          end
+          item
+            GestureID = sgiLeftUp
+          end
+          item
+            GestureID = sgiRightUp
+          end
+          item
+            GestureID = sgiRightDown
+          end
+          item
+            GestureID = sgiUpDown
+          end
+          item
+            GestureID = sgiDownUp
+          end
+          item
+            GestureID = sgiLeftRight
+          end
+          item
+            GestureID = sgiRightLeft
+          end
+          item
+            GestureID = sgiUpLeftLong
+          end
+          item
+            GestureID = sgiUpRightLong
+          end
+          item
+            GestureID = sgiDownLeftLong
+          end
+          item
+            GestureID = sgiDownRightLong
+          end
+          item
+            GestureID = sgiScratchout
+          end
+          item
+            GestureID = sgiTriangle
+          end
+          item
+            GestureID = sgiSquare
+          end
+          item
+            GestureID = sgiCheck
+          end
+          item
+            GestureID = sgiCurlicue
+          end
+          item
+            GestureID = sgiDoubleCurlicue
+          end
+          item
+            GestureID = sgiCircle
+          end
+          item
+            GestureID = sgiDoubleCircle
+          end
+          item
+            GestureID = sgiSemiCircleLeft
+          end
+          item
+            GestureID = sgiSemiCircleRight
+          end
+          item
+            GestureID = sgiChevronUp
+          end
+          item
+            GestureID = sgiChevronDown
+          end
+          item
+            GestureID = sgiChevronLeft
+          end
+          item
+            Action = Action1
+            GestureID = sgiChevronRight
+          end>
+      end
+      item
+        Control = Owner
+        Collection = <>
       end>
+  end
+  object ActionList1: TActionList
+    Left = 92
+    Top = 30
+    object Action1: TAction
+      Text = 'Action1'
+      OnExecute = Action1Execute
+    end
   end
 end

@@ -58,6 +58,10 @@ begin
 
   FSessaoListaController := TConversaSessaoListaController.Create(Self, AConexaoBancoDados);
   FSessoes := TDictionary<Integer, TConversaSessaoItemView>.Create;
+
+//  tbcSessoes.ColorScheme.TabBackground = Color.Transparent
+//  tbcSessoes.ColorScheme.TabBackground2 = Color.Transparent
+//  tbcSessoes.BackColor = Color.Transparent
 end;
 
 destructor TConversaSessaoListaView.Destroy;

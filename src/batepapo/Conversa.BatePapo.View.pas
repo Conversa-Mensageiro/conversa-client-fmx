@@ -4,13 +4,30 @@ unit Conversa.BatePapo.View;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.StdCtrls,
-  FMX.Ani, System.Math, FMX.Effects, FMX.Filter.Effects, FMX.Edit;
+  System.Classes,
+  System.Math,
+  System.SysUtils,
+  System.Types,
+  System.UITypes,
+  System.Variants,
+  FMX.Ani,
+  FMX.Controls,
+  FMX.Controls.Presentation,
+  FMX.Dialogs,
+  FMX.Edit,
+  FMX.Effects,
+  FMX.Filter.Effects,
+  FMX.Forms,
+  FMX.Graphics,
+  FMX.Layouts,
+  FMX.Objects,
+  FMX.StdCtrls,
+  FMX.Types,
+
+  Conversa.BatePapo.Controller;
 
 type
-  TForm2 = class(TForm)
+  TConversaBatePapoView = class(TForm)
     lytForm: TLayout;
     rctgForm: TRectangle;
     lytTopTitle: TLayout;
@@ -49,6 +66,8 @@ type
     procedure MinhaNovaAnimacaoFinish(Sender: TObject);
   private
     { Private declarations }
+    FController: TConversaBatePapoController;
+    FID: Double;
     FX,FY:Single;
     FCircle: TCircle;
     FFloatAnimation: TFloatAnimation;
@@ -56,16 +75,24 @@ type
     procedure FloatAnimation1Process(Sender: TObject);
   public
     { Public declarations }
+    constructor Create(AOwner: TComponent; dIDConversa: Double); reintroduce; overload;
   end;
 
 var
-  Form2: TForm2;
+  ConversaBatePapoView: TConversaBatePapoView;
 
 implementation
 
 {$R *.fmx}
 
-procedure TForm2.FormCreate(Sender: TObject);
+constructor TConversaBatePapoView.Create(AOwner: TComponent; dIDConversa: Double);
+begin
+  inherited Create(AOwner);
+  FController := TConversaBatePapoController.Create(Self, nil);
+  FID := dIDConversa;
+end;
+
+procedure TConversaBatePapoView.FormCreate(Sender: TObject);
 begin
   FCircle := TCircle.Create(crclFotoChat);
   FCircle.ClipChildren := True;
@@ -88,8 +115,7 @@ begin
   lblChat_Info.Text  := 'Online';
 end;
 
-procedure TForm2.Circle1MouseDown(Sender: TObject; Button: TMouseButton;
-  Shift: TShiftState; X, Y: Single);
+procedure TConversaBatePapoView.Circle1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
 begin
   Circle2.Parent := TControl(Sender);
   Circle2.Position.X := X-(Circle2.Width/2);
@@ -102,12 +128,12 @@ begin
   MinhaNovaAnimacao.StopValue := Max(TControl(Sender).Width,TControl(Sender).Height)*2;
 end;
 
-procedure TForm2.FloatAnimation1Finish(Sender: TObject);
+procedure TConversaBatePapoView.FloatAnimation1Finish(Sender: TObject);
 begin
   FCircle.Visible := False;
 end;
 
-procedure TForm2.FloatAnimation1Process(Sender: TObject);
+procedure TConversaBatePapoView.FloatAnimation1Process(Sender: TObject);
 begin
   FCircle.Width := FCircle.Height;
   FCircle.Position.X := FX-(FCircle.Width/2);;
@@ -115,12 +141,12 @@ begin
 end;
 
 
-procedure TForm2.MinhaNovaAnimacaoFinish(Sender: TObject);
+procedure TConversaBatePapoView.MinhaNovaAnimacaoFinish(Sender: TObject);
 begin
   Circle2.Visible := False;
 end;
 
-procedure TForm2.MinhaNovaAnimacaoProcess(Sender: TObject);
+procedure TConversaBatePapoView.MinhaNovaAnimacaoProcess(Sender: TObject);
 begin
   Circle2.Width := Circle2.Height;
   Circle2.Position.X := FX-(Circle2.Width/2);;
