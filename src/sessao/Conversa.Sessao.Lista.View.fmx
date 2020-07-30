@@ -12,7 +12,7 @@ object ConversaSessaoListaView: TConversaSessaoListaView
     object rctgConversaSessaoListaView: TRectangle
       Align = Client
       Corners = [TopLeft]
-      Fill.Color = claWheat
+      Fill.Color = claWhite
       Size.Width = 674.000000000000000000
       Size.Height = 445.000000000000000000
       Size.PlatformDefault = False
@@ -27,16 +27,6 @@ object ConversaSessaoListaView: TConversaSessaoListaView
       Size.Height = 445.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1
-      object tbcSessoes: TTabControl
-        Align = Client
-        ClipChildren = True
-        Size.Width = 674.000000000000000000
-        Size.Height = 445.000000000000000000
-        Size.PlatformDefault = False
-        StyleLookup = 'tabcontrolstyle'
-        TabOrder = 0
-        TabPosition = None
-      end
     end
   end
 end

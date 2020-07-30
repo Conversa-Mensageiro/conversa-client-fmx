@@ -25,7 +25,7 @@ uses
   FMX.Objects,
   FMX.StdCtrls,
   FMX.Types,
-  Conversa.Conexao.Banco_Dados,
+  Conversa.Sessao.Item.Controller,
   Conversa.Lista.Item.Frame,
   Conversa.Lista.Controller;
 
@@ -64,7 +64,7 @@ type
     procedure LimparLista;
   public
     { Public declarations }
-    constructor Create(AOwner: TComponent; AConexaoBancoDados: TConversaConexaoBancoDados); reintroduce; overload;
+    constructor Create(AOwner: TComponent; ASessaoController: TConversaSessaoItemController); reintroduce; overload;
     procedure CarregarConversas;
     function AoAbrirBatePapo(pAoAbrirConversa: TProc<Double>): TConversaListaView;
   end;
@@ -78,10 +78,10 @@ implementation
 
 { TForm1 }
 
-constructor TConversaListaView.Create(AOwner: TComponent; AConexaoBancoDados: TConversaConexaoBancoDados);
+constructor TConversaListaView.Create(AOwner: TComponent; ASessaoController: TConversaSessaoItemController);
 begin
   inherited Create(AOwner);
-  FConversaListaController := TConversaListaController.Create(Self, AConexaoBancoDados);
+  FConversaListaController := TConversaListaController.Create(Self, ASessaoController.WebSocket);
 end;
 
 procedure TConversaListaView.edtPesquisaChange(Sender: TObject);
@@ -122,31 +122,32 @@ var
   cifItem: TConversaItemFrame;
 begin
   LimparLista;
-  with FConversaListaController.qryConversa do
+  with FConversaListaController.cdsConversa do
   try
-    Open;
+    WSOpen;
     First;
     while not Eof do
     try
       cifItem            := TConversaItemFrame.Create(lytItems);
       cifItem.Parent     := lytItems;
-      cifItem.Position.Y := lytItems.Height + (cifItem.Height * 2);
+      cifItem.Position.Y := - lytItems.Height; //lytItems.Height + (cifItem.Height * 2);
       cifItem.Align      := TAlignLayout.Top;
-      FConversas.Add(FieldByName('id').AsFloat, cifItem);
       cifItem.Name       := 'Conversa_'+ FieldByName('id').AsString;
 
       cifItem
+        .ID(FieldByName('id').AsFloat)
         .Descricao(FieldByName('descricao').AsString)
         .Mensagem(FieldByName('conteudo').AsString)
-        .DataConversa(FieldByName('data').AsDateTime)
+        .DataConversa(FieldByName('msg_incluido_em').AsDateTime)
         .Qtd(FieldByName('qtd').AsInteger)
         .AoAbrirBatePapo(FAoAbrirBatePapo);
 
-      CorrigirPosicaoLayoutItems;
-      CorrigirAlturaLayoutItems;
+      FConversas.Add(FieldByName('id').AsFloat, cifItem);
     finally
       Next;
     end;
+      CorrigirPosicaoLayoutItems;
+      CorrigirAlturaLayoutItems;
   finally
     Close;
   end;
@@ -174,6 +175,7 @@ begin
 
     FConversas.Remove(ITem);
   end;
+  FConversas.Clear;
 end;
 
 procedure TConversaListaView.vsbItemsResize(Sender: TObject);

@@ -11700,15 +11700,15 @@ object ConversaItemFrame: TConversaItemFrame
                 StartValue = 0.000000000000000000
                 StopValue = 0.000000000000000000
               end
-            end
-            object lblContador: TLabel
-              Align = Client
-              Size.Width = 24.000000000000000000
-              Size.Height = 24.000000000000000000
-              Size.PlatformDefault = False
-              TextSettings.HorzAlign = Center
-              Text = 'lblContador'
-              TabOrder = 1
+              object lblContador: TLabel
+                Align = Client
+                Size.Width = 24.000000000000000000
+                Size.Height = 24.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.HorzAlign = Center
+                Text = 'lblContador'
+                TabOrder = 0
+              end
             end
           end
         end
@@ -11764,110 +11764,8 @@ object ConversaItemFrame: TConversaItemFrame
     Top = 7
     GestureData = <
       item
-        Control = lblMensagem
-        Collection = <
-          item
-            GestureID = sgiLeft
-          end
-          item
-            GestureID = sgiRight
-          end
-          item
-            GestureID = sgiUp
-          end
-          item
-            GestureID = sgiUpLeft
-          end
-          item
-            GestureID = sgiDown
-          end
-          item
-            GestureID = sgiUpRight
-          end
-          item
-            GestureID = sgiDownLeft
-          end
-          item
-            GestureID = sgiDownRight
-          end
-          item
-            GestureID = sgiLeftUp
-          end
-          item
-            GestureID = sgiLeftDown
-          end
-          item
-            GestureID = sgiRightUp
-          end
-          item
-            GestureID = sgiRightDown
-          end
-          item
-            GestureID = sgiUpDown
-          end
-          item
-            GestureID = sgiDownUp
-          end
-          item
-            GestureID = sgiRightLeft
-          end
-          item
-            GestureID = sgiLeftRight
-          end
-          item
-            GestureID = sgiUpLeftLong
-          end
-          item
-            GestureID = sgiUpRightLong
-          end
-          item
-            GestureID = sgiDownLeftLong
-          end
-          item
-            GestureID = sgiDownRightLong
-          end
-          item
-            GestureID = sgiScratchout
-          end
-          item
-            GestureID = sgiTriangle
-          end
-          item
-            GestureID = sgiSquare
-          end
-          item
-            GestureID = sgiCheck
-          end
-          item
-            GestureID = sgiCurlicue
-          end
-          item
-            GestureID = sgiDoubleCurlicue
-          end
-          item
-            GestureID = sgiCircle
-          end
-          item
-            GestureID = sgiDoubleCircle
-          end
-          item
-            GestureID = sgiSemiCircleLeft
-          end
-          item
-            GestureID = sgiSemiCircleRight
-          end
-          item
-            GestureID = sgiChevronUp
-          end
-          item
-            GestureID = sgiChevronDown
-          end
-          item
-            GestureID = sgiChevronLeft
-          end
-          item
-            GestureID = sgiChevronRight
-          end>
+        Control = Owner
+        Collection = <>
       end
       item
         Control = lytItemConversa
@@ -11974,8 +11872,110 @@ object ConversaItemFrame: TConversaItemFrame
           end>
       end
       item
-        Control = Owner
-        Collection = <>
+        Control = lblMensagem
+        Collection = <
+          item
+            GestureID = sgiLeft
+          end
+          item
+            GestureID = sgiRight
+          end
+          item
+            GestureID = sgiUp
+          end
+          item
+            GestureID = sgiUpLeft
+          end
+          item
+            GestureID = sgiDown
+          end
+          item
+            GestureID = sgiUpRight
+          end
+          item
+            GestureID = sgiDownLeft
+          end
+          item
+            GestureID = sgiDownRight
+          end
+          item
+            GestureID = sgiLeftUp
+          end
+          item
+            GestureID = sgiLeftDown
+          end
+          item
+            GestureID = sgiRightUp
+          end
+          item
+            GestureID = sgiRightDown
+          end
+          item
+            GestureID = sgiUpDown
+          end
+          item
+            GestureID = sgiDownUp
+          end
+          item
+            GestureID = sgiRightLeft
+          end
+          item
+            GestureID = sgiLeftRight
+          end
+          item
+            GestureID = sgiUpLeftLong
+          end
+          item
+            GestureID = sgiUpRightLong
+          end
+          item
+            GestureID = sgiDownLeftLong
+          end
+          item
+            GestureID = sgiDownRightLong
+          end
+          item
+            GestureID = sgiScratchout
+          end
+          item
+            GestureID = sgiTriangle
+          end
+          item
+            GestureID = sgiSquare
+          end
+          item
+            GestureID = sgiCheck
+          end
+          item
+            GestureID = sgiCurlicue
+          end
+          item
+            GestureID = sgiDoubleCurlicue
+          end
+          item
+            GestureID = sgiCircle
+          end
+          item
+            GestureID = sgiDoubleCircle
+          end
+          item
+            GestureID = sgiSemiCircleLeft
+          end
+          item
+            GestureID = sgiSemiCircleRight
+          end
+          item
+            GestureID = sgiChevronUp
+          end
+          item
+            GestureID = sgiChevronDown
+          end
+          item
+            GestureID = sgiChevronLeft
+          end
+          item
+            GestureID = sgiChevronRight
+          end>
       end>
   end
   object ActionList1: TActionList

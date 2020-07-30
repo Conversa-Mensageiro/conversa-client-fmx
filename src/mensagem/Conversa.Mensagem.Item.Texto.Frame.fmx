@@ -1,0 +1,38 @@
+inherited ConversaMensagemItemTextoFrame: TConversaMensagemItemTextoFrame
+  inherited lytConversaMensagemItemBaseFrame: TLayout
+    inherited lytCorpoMensagem: TLayout
+      inherited lytInformacoes: TLayout
+        inherited lytConteudo: TLayout
+          Size.Height = 134.000000000000000000
+          object lblTextoMensagem: TLabel
+            Align = Client
+            StyledSettings = [Family, Size, Style]
+            Size.Width = 308.000000000000000000
+            Size.Height = 134.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.FontColor = claWhite
+            Text = 'lblTextoMensagem'
+            TabOrder = 0
+          end
+        end
+        inherited lytNomeUsuario: TLayout
+          inherited lblNomeUsuario: TLabel
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+          end
+        end
+        inherited lytResposta: TLayout
+          inherited rctgResposta: TRectangle
+            inherited lytNomeUsuarioResposta: TLayout
+              inherited lblNomeUsuarioResposta: TLabel
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+              end
+            end
+          end
+        end
+        inherited lblDataHoraMensagem: TLabel
+          Margins.Top = 3.000000000000000000
+        end
+      end
+    end
+  end
+end

@@ -20,7 +20,7 @@ uses
   FMX.TabControl,
   FMX.Types,
 
-  Conversa.Conexao.Banco_Dados,
+  Conversa.Sessao.Item.Controller,
   Conversa.Lista.View,
 
   Conversa.BatePapo.View;
@@ -39,14 +39,17 @@ type
     procedure lytSessaoClientResize(Sender: TObject);
   private
     { Private declarations }
+    FController: TConversaSessaoItemController;
+
     FBatePapo: TConversaBatePapoView;
     FConversaListaView: TConversaListaView;
-    FConexaoBancoDados: TConversaConexaoBancoDados;
     procedure AbrirBatePapo(iIDConversa: Double);
     procedure PosicionarBatePapoPrincipal;
   public
     { Public declarations }
-    constructor Create(AOwner: TTabItem); reintroduce; overload;
+    constructor Create(AOwner: TFmxObject); reintroduce; overload;
+    property Controller: TConversaSessaoItemController read FController;
+    property ConversaListaView: TConversaListaView read FConversaListaView write FConversaListaView;
   end;
 
 var
@@ -58,9 +61,10 @@ implementation
 
 { TConversaSessaoItemView }
 
-constructor TConversaSessaoItemView.Create(AOwner: TTabItem);
+constructor TConversaSessaoItemView.Create(AOwner: TFmxObject);
 begin
   inherited Create(AOwner);
+  FController := TConversaSessaoItemController.Create(Self);
 
   if Assigned(AOwner) then
   begin
@@ -73,14 +77,10 @@ end;
 
 procedure TConversaSessaoItemView.FormCreate(Sender: TObject);
 begin
-  FConexaoBancoDados := TConversaConexaoBancoDados.Create(Self);
-
-
-  FConversaListaView := TConversaListaView.Create(Self, FConexaoBancoDados);
+  FConversaListaView := TConversaListaView.Create(Self, FController);
   FConversaListaView.Parent := tiConversasLista;
   FConversaListaView.lytForm_Conversas.Parent := tiConversasLista;
   FConversaListaView.AoAbrirBatePapo(AbrirBatePapo);
-  FConversaListaView.CarregarConversas;
 
   tbcSessao.ActiveTab := tiConversasLista;
 end;
@@ -94,10 +94,12 @@ procedure TConversaSessaoItemView.AbrirBatePapo(iIDConversa: Double);
 begin
   if not Assigned(FBatePapo) then
   begin
-    FBatePapo := TConversaBatePapoView.Create(Self);
+    FBatePapo := TConversaBatePapoView.Create(Self, FController, iIDConversa, FController.Usuario_ID);
     FBatePapo.Parent := Self;
   end;
   PosicionarBatePapoPrincipal;
+  Application.ProcessMessages;
+  FBatePapo.CarregarMensagens;
 end;
 
 procedure TConversaSessaoItemView.PosicionarBatePapoPrincipal;

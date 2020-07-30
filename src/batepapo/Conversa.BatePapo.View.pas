@@ -24,7 +24,14 @@ uses
   FMX.StdCtrls,
   FMX.Types,
 
-  Conversa.BatePapo.Controller;
+  Data.DB,
+
+  Conversa.Sessao.Item.Controller,
+  Conversa.BatePapo.Controller,
+
+  Conversa.Mensagem.Lista.View,
+  Conversa.Mensagem.Item.Base.Frame,
+  Conversa.Mensagem.Item.Texto.Frame;
 
 type
   TConversaBatePapoView = class(TForm)
@@ -60,14 +67,19 @@ type
     Layout4: TLayout;
     Layout5: TLayout;
     lblChat_Info: TLabel;
+    lytMensagens: TLayout;
     procedure FormCreate(Sender: TObject);
     procedure Circle1MouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
     procedure MinhaNovaAnimacaoProcess(Sender: TObject);
     procedure MinhaNovaAnimacaoFinish(Sender: TObject);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
   private
     { Private declarations }
+    FMensagemLista: TConversaMensagemListaView;
     FController: TConversaBatePapoController;
     FID: Double;
+    FUserID: Double;
     FX,FY:Single;
     FCircle: TCircle;
     FFloatAnimation: TFloatAnimation;
@@ -75,7 +87,8 @@ type
     procedure FloatAnimation1Process(Sender: TObject);
   public
     { Public declarations }
-    constructor Create(AOwner: TComponent; dIDConversa: Double); reintroduce; overload;
+    constructor Create(AOwner: TComponent; ASessaoController: TConversaSessaoItemController; dIDConversa, dIDUser: Double); reintroduce; overload;
+    procedure CarregarMensagens;
   end;
 
 var
@@ -85,11 +98,31 @@ implementation
 
 {$R *.fmx}
 
-constructor TConversaBatePapoView.Create(AOwner: TComponent; dIDConversa: Double);
+constructor TConversaBatePapoView.Create(AOwner: TComponent; ASessaoController: TConversaSessaoItemController; dIDConversa, dIDUser: Double);
 begin
   inherited Create(AOwner);
-  FController := TConversaBatePapoController.Create(Self, nil);
+  FMensagemLista := TConversaMensagemListaView.Create(Self);
+  FMensagemLista.lytConversaMensagemListaView.Parent := lytMensagens;
+
+  FController := TConversaBatePapoController.Create(Self, ASessaoController.WebSocket);
   FID := dIDConversa;
+  FUserID := dIDUser;
+end;
+
+procedure TConversaBatePapoView.Edit1KeyDown(Sender: TObject; var Key: Word;
+  var KeyChar: Char; Shift: TShiftState);
+begin
+  if Key = vkReturn then
+  begin
+    FController.cdsMensagem.WSAppend;
+    FController.cdsMensagem.FieldByName('mensagem_id').AsInteger := 0;
+    FController.cdsMensagem.FieldByName('resposta').AsInteger    := 0;
+    FController.cdsMensagem.FieldByName('confirmacao').AsInteger := 0;
+    FController.cdsMensagem.FieldByName('conversa_id').AsFloat   := FID;
+    FController.cdsMensagem.FieldByName('usuario_id').AsFloat    := FUserID;
+    FController.cdsMensagem.FieldByName('conteudo').AsString     := Edit1.Text;
+    FController.cdsMensagem.WSPost;
+  end;
 end;
 
 procedure TConversaBatePapoView.FormCreate(Sender: TObject);
@@ -140,7 +173,6 @@ begin
   FCircle.Position.Y := FY-(FCircle.Height/2);;
 end;
 
-
 procedure TConversaBatePapoView.MinhaNovaAnimacaoFinish(Sender: TObject);
 begin
   Circle2.Visible := False;
@@ -151,6 +183,38 @@ begin
   Circle2.Width := Circle2.Height;
   Circle2.Position.X := FX-(Circle2.Width/2);;
   Circle2.Position.Y := FY-(Circle2.Height/2);;
+end;
+
+procedure TConversaBatePapoView.CarregarMensagens;
+var
+  Item: TConversaMensagemItemTextoFrame;
+begin
+  FController.ObterMensagens(FID);
+
+  FController.cdsMensagem.First;
+  while not FController.cdsMensagem.Eof do
+  try
+    Item := TConversaMensagemItemTextoFrame.Create(FMensagemLista.lytItems);
+    Item
+        .ID(FController.cdsMensagem.FieldByName('id').AsInteger);
+
+    if FController.cdsMensagem.FieldByName('usuario_id').AsFloat = FUserID then
+      Item.SetPosicao(TPosicao.Direita)
+    else
+      Item.SetPosicao(TPosicao.Esquerda);
+
+
+    FMensagemLista.Add(Item);
+
+    Item
+      .NomeUsuario(FController.cdsMensagem.FieldByName('usuario_id').AsString)
+      .Conteudo(TBlobField(FController.cdsMensagem.FieldByName('conteudo')).AsString)
+      .DataHora(FController.cdsMensagem.FieldByName('incluido_em').AsDateTime);
+
+    Item.PrepararConteudo;
+  finally
+    FController.cdsMensagem.Next;
+  end;
 end;
 
 end.

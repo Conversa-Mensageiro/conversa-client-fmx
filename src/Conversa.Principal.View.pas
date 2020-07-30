@@ -24,9 +24,6 @@ uses
   FMX.StdCtrls,
   FMX.TabControl,
   FMX.Types,
-
-  Conversa.Conexao.Banco_Dados,
-  Conversa.Dispositivo.Controller,
   Conversa.Sessao.Lista.View;
 
 type
@@ -49,10 +46,11 @@ type
     procedure tmrMultiView_OpenTimer(Sender: TObject);
   private
     { Private declarations }
-    FConexaoBancoDados: TConversaConexaoBancoDados;
+  protected
     FSessoesLista: TConversaSessaoListaView;
   public
     { Public declarations }
+    class function SessoesLista: TConversaSessaoListaView;
   end;
 
 var
@@ -65,10 +63,14 @@ implementation
 
 { TPrincipalView }
 
+class function TPrincipalView.SessoesLista: TConversaSessaoListaView;
+begin
+  Result := PrincipalView.FSessoesLista;
+end;
+
 procedure TPrincipalView.FormCreate(Sender: TObject);
 begin
-  FConexaoBancoDados := TConversaConexaoBancoDados.Create(Self);
-  FSessoesLista := TConversaSessaoListaView.Create(lytClientSessoes, FConexaoBancoDados);
+  FSessoesLista := TConversaSessaoListaView.Create(lytClientSessoes);
   FSessoesLista.CarregarListaSessoesAtivas;
   MultiView1.Mode := TMultiViewMode.NavigationPane;
   MultiView1.NavigationPaneOptions.CollapsedWidth := 60;

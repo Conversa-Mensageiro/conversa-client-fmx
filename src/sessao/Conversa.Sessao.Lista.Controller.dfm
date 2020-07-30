@@ -1,25 +1,13 @@
 inherited ConversaSessaoListaController: TConversaSessaoListaController
   OldCreateOrder = True
-  object qrySessoesAtivas: TFDQuery
-    Connection = ConversaConexaoBancoDados.conConversa
-    SQL.Strings = (
-      'SELECT usuario.id'
-      '     , usuario.nome'
-      '     , usuario.apelido'
-      '     , usuario.email'
-      '     , usuario.usuario'
-      '     , usuario.senha'
-      '     , usuario.conectado'
-      '     , usuario.active'
-      '  FROM usuario'
-      ' WHERE conectado = 1')
+  object cdsSessoesAtivas: TClientDataSet
+    Aggregates = <>
+    Params = <>
     Left = 88
     Top = 56
-    object qrySessoesAtivasid: TFDAutoIncField
+    object qrySessoesAtivasid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object qrySessoesAtivasnome: TStringField
       FieldName = 'nome'

@@ -1,0 +1,168 @@
+object ConversaMensagemItemBaseFrame: TConversaMensagemItemBaseFrame
+  Size.Width = 320.000000000000000000
+  Size.Height = 240.000000000000000000
+  Size.PlatformDefault = False
+  object lytConversaMensagemItemBaseFrame: TLayout
+    Align = Client
+    ClipChildren = True
+    Size.Width = 320.000000000000000000
+    Size.Height = 240.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    OnResized = lytConversaMensagemItemBaseFrameResized
+    object lytCorpoMensagem: TLayout
+      Align = Client
+      ClipChildren = True
+      Size.Width = 320.000000000000000000
+      Size.Height = 240.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object lytBalaoMensagem: TLayout
+        Align = Client
+        ClipChildren = True
+        Size.Width = 320.000000000000000000
+        Size.Height = 240.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object rctgBalaoMensagem: TRectangle
+          Align = Client
+          Fill.Color = xFF4285F4
+          Size.Width = 320.000000000000000000
+          Size.Height = 240.000000000000000000
+          Size.PlatformDefault = False
+          XRadius = 5.000000000000000000
+          YRadius = 5.000000000000000000
+        end
+      end
+      object lytInformacoes: TLayout
+        Align = Client
+        ClipChildren = True
+        Margins.Left = 3.000000000000000000
+        Margins.Top = 3.000000000000000000
+        Margins.Right = 3.000000000000000000
+        Margins.Bottom = 3.000000000000000000
+        Size.Width = 314.000000000000000000
+        Size.Height = 234.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object lytConteudo: TLayout
+          Align = Client
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 137.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+        end
+        object lytNomeUsuario: TLayout
+          Align = Top
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 3.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          object lblNomeUsuario: TLabel
+            Align = Client
+            AutoSize = True
+            StyledSettings = [Family, Size]
+            Size.Width = 308.000000000000000000
+            Size.Height = 16.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.FontColor = claWhite
+            Text = '(Nome do Usu'#225'rio)'
+            TabOrder = 0
+          end
+        end
+        object lytResposta: TLayout
+          Align = Top
+          Margins.Left = 3.000000000000000000
+          Margins.Top = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 22.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 3
+          object rctgResposta: TRectangle
+            Align = Client
+            Fill.Color = xFF004080
+            Size.Width = 308.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Stroke.Kind = None
+            XRadius = 2.000000000000000000
+            YRadius = 2.000000000000000000
+            object lytNomeUsuarioResposta: TLayout
+              Align = Top
+              Margins.Left = 3.000000000000000000
+              Margins.Top = 3.000000000000000000
+              Margins.Right = 3.000000000000000000
+              Position.X = 3.000000000000000000
+              Position.Y = 3.000000000000000000
+              Size.Width = 302.000000000000000000
+              Size.Height = 16.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              object lblNomeUsuarioResposta: TLabel
+                Align = Client
+                AutoSize = True
+                StyledSettings = [Family, Size]
+                Size.Width = 302.000000000000000000
+                Size.Height = 16.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.Font.StyleExt = {00070000000000000004000000}
+                TextSettings.FontColor = claWhite
+                Text = '(Nome do Usu'#225'rio)'
+                TabOrder = 0
+              end
+            end
+            object lytRespostaMensagem: TLayout
+              Align = Client
+              Margins.Left = 3.000000000000000000
+              Margins.Right = 3.000000000000000000
+              Margins.Bottom = 3.000000000000000000
+              Size.Width = 302.000000000000000000
+              Size.Height = 28.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object lblRespostaMensagem: TLabel
+                Align = Client
+                StyledSettings = [Family, Size, Style]
+                Size.Width = 302.000000000000000000
+                Size.Height = 28.000000000000000000
+                Size.PlatformDefault = False
+                TextSettings.FontColor = claWhite
+                Text = 'lblRespostaMensagem'
+                TabOrder = 0
+              end
+            end
+          end
+        end
+        object lblDataHoraMensagem: TLabel
+          Align = Bottom
+          StyledSettings = [Family, Size, Style]
+          Margins.Left = 3.000000000000000000
+          Margins.Right = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.X = 3.000000000000000000
+          Position.Y = 215.000000000000000000
+          Size.Width = 308.000000000000000000
+          Size.Height = 16.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Trailing
+          Text = '(Data e Hora)'
+          TabOrder = 0
+        end
+      end
+    end
+  end
+end

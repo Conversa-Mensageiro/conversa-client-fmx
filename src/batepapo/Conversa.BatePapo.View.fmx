@@ -228,6 +228,7 @@ object ConversaBatePapoView: TConversaBatePapoView
                 Size.Height = 26.000000000000000000
                 Size.PlatformDefault = False
                 TextPrompt = 'Escrever uma mensagem...'
+                OnKeyDown = Edit1KeyDown
               end
               object Layout3: TLayout
                 Align = Left
@@ -247,6 +248,14 @@ object ConversaBatePapoView: TConversaBatePapoView
             end
           end
         end
+      end
+      object lytMensagens: TLayout
+        Align = Client
+        ClipChildren = True
+        Size.Width = 400.000000000000000000
+        Size.Height = 390.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
       end
     end
     object Button1: TButton

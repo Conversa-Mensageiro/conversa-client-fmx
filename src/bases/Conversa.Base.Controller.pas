@@ -6,18 +6,18 @@ interface
 uses
   System.SysUtils,
   System.Classes,
-  FireDAC.Comp.Client,
-  Conversa.Conexao.Banco_Dados;
+  Conversa.WebSocket;
 
 type
   TConversaBaseController = class(TDataModule)
   private
     { Private declarations }
+    FWebSocket: TWebSocketClient;
   public
     { Public declarations }
-    ConexaoBancoDados: TConversaConexaoBancoDados;
     constructor Create(AOwner: TComponent); reintroduce; overload;
-    constructor Create(AOwner: TComponent; AConexao: TConversaConexaoBancoDados); reintroduce; overload;
+    constructor Create(AOwner: TComponent; AWebSocket: TWebSocketClient); reintroduce; overload;
+    property WebSocket: TWebSocketClient read FWebSocket write FWebSocket;
   end;
 
 var
@@ -35,20 +35,11 @@ begin
   RemoveDataModule(Self);
 end;
 
-constructor TConversaBaseController.Create(AOwner: TComponent; AConexao: TConversaConexaoBancoDados);
-var
-  iComponent: Integer;
-  Component: TComponent;
+constructor TConversaBaseController.Create(AOwner: TComponent; AWebSocket: TWebSocketClient);
 begin
+  FWebSocket := AWebSocket;
   inherited Create(AOwner);
-  ConexaoBancoDados := AConexao;
-
-  for iComponent := 0 to Pred(ComponentCount) do
-  begin
-    Component := Components[iComponent];
-    if Assigned(Component) and Component.InheritsFrom(FireDAC.Comp.Client.TFDQuery) then
-      FireDAC.Comp.Client.TFDQuery(Component).Connection := ConexaoBancoDados.conConversa;
-  end;
+  RemoveDataModule(Self);
 end;
 
 end.

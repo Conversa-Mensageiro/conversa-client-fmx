@@ -5,27 +5,16 @@ interface
 
 uses
   System.Classes,
+  System.JSON,
   System.SysUtils,
   Data.DB,
-  FireDAC.Comp.Client,
-  FireDAC.Comp.DataSet,
-  FireDAC.DApt,
-  FireDAC.DApt.Intf,
-  FireDAC.DatS,
-  FireDAC.Phys.Intf,
-  FireDAC.Stan.Async,
-  FireDAC.Stan.Error,
-  FireDAC.Stan.Intf,
-  FireDAC.Stan.Option,
-  FireDAC.Stan.Param,
-
-  Conversa.Base.Controller,
-  Conversa.Conexao.Banco_Dados;
+  Datasnap.DBClient,
+  Conversa.Base.Controller;
 
 type
   TConversaSessaoListaController = class(TConversaBaseController)
-    qrySessoesAtivas: TFDQuery;
-    qrySessoesAtivasid: TFDAutoIncField;
+    cdsSessoesAtivas: TClientDataSet;
+    qrySessoesAtivasid: TIntegerField;
     qrySessoesAtivasnome: TStringField;
     qrySessoesAtivasapelido: TStringField;
     qrySessoesAtivasemail: TStringField;
@@ -37,10 +26,8 @@ type
   public
     { Public declarations }
     procedure CarregarSessoesAtivas;
+    function ObterInformacoesSessa: TJSONValue;
   end;
-
-var
-  ConversaSessaoListaController: TConversaSessaoListaController;
 
 implementation
 
@@ -52,9 +39,42 @@ implementation
 
 procedure TConversaSessaoListaController.CarregarSessoesAtivas;
 begin
-  qrySessoesAtivas.Connection := ConexaoBancoDados.conConversa;
-  qrySessoesAtivas.Close;
-  qrySessoesAtivas.Open;
+  with ObterInformacoesSessa do
+  try
+    cdsSessoesAtivas.CreateDataSet;
+    cdsSessoesAtivas.Append;
+    cdsSessoesAtivas.FieldByName('id').AsInteger       := GetValue<Integer>('id');
+    cdsSessoesAtivas.FieldByName('nome').AsString      := GetValue<String>('nome');
+    cdsSessoesAtivas.FieldByName('apelido').AsString   := GetValue<String>('apelido');
+    cdsSessoesAtivas.FieldByName('email').AsString     := GetValue<String>('email');
+    cdsSessoesAtivas.FieldByName('usuario').AsString   := GetValue<String>('usuario');
+    cdsSessoesAtivas.FieldByName('senha').AsString     := GetValue<String>('senha');
+    cdsSessoesAtivas.FieldByName('conectado').AsString := GetValue<String>('conectado');
+    cdsSessoesAtivas.FieldByName('active').AsString    := GetValue<String>('active');
+    cdsSessoesAtivas.Post;
+  finally
+    Free;
+  end;
+end;
+
+function TConversaSessaoListaController.ObterInformacoesSessa: TJSONValue;
+var
+  sFilePath: String;
+begin
+  sFilePath := EmptyStr;
+  if ParamCount > 0 then
+    sFilePath := ParamStr(1);
+
+  sFilePath := ExtractFilePath(ParamStr(0)) +'conversa'+sFilePath+'.json';
+
+  with TStringList.Create do
+  try
+    if FileExists(sFilePath) then
+      LoadFromFile(sFilePath);
+    Result := TJSONObject.ParseJSONValue(Text);
+  finally
+    Free;
+  end;
 end;
 
 end.

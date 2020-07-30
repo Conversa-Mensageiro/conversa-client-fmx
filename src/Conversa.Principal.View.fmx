@@ -2,7 +2,7 @@ object PrincipalView: TPrincipalView
   Left = 0
   Top = 0
   Caption = 'Conversas'
-  ClientHeight = 480
+  ClientHeight = 556
   ClientWidth = 1086
   Position = ScreenCenter
   SystemStatusBar.BackgroundColor = xFF7551E9
@@ -14,7 +14,7 @@ object PrincipalView: TPrincipalView
   object lytForm: TLayout
     Align = Client
     Size.Width = 1086.000000000000000000
-    Size.Height = 480.000000000000000000
+    Size.Height = 556.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
     object rctBackground: TRectangle
@@ -34,13 +34,13 @@ object PrincipalView: TPrincipalView
       Fill.Gradient.StopPosition.X = 0.499999970197677600
       Fill.Gradient.StopPosition.Y = 0.000000000000000000
       Size.Width = 836.000000000000000000
-      Size.Height = 480.000000000000000000
+      Size.Height = 556.000000000000000000
       Size.PlatformDefault = False
       Stroke.Kind = None
       object lytClientSessoes: TLayout
         Align = Client
         Size.Width = 836.000000000000000000
-        Size.Height = 480.000000000000000000
+        Size.Height = 556.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
       end
@@ -50,13 +50,13 @@ object PrincipalView: TPrincipalView
       BorderOptions.Visible = False
       Mode = Panel
       Size.Width = 250.000000000000000000
-      Size.Height = 480.000000000000000000
+      Size.Height = 556.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       object lytMenu: TLayout
         Align = Client
         Size.Width = 250.000000000000000000
-        Size.Height = 480.000000000000000000
+        Size.Height = 556.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         object Rectangle1: TRectangle
@@ -76,7 +76,7 @@ object PrincipalView: TPrincipalView
           Fill.Gradient.StopPosition.X = 0.499999970197677600
           Fill.Gradient.StopPosition.Y = 0.000000000000000000
           Size.Width = 250.000000000000000000
-          Size.Height = 480.000000000000000000
+          Size.Height = 556.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
           object lytInformacoesUsuario_Client: TLayout

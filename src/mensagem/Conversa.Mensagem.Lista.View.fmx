@@ -1,0 +1,41 @@
+object ConversaMensagemListaView: TConversaMensagemListaView
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 277
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object lytConversaMensagemListaView: TLayout
+    Align = Client
+    ClipChildren = True
+    Size.Width = 277.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    OnResize = lytConversaMensagemListaViewResize
+    object sbvConversaMensagemListaView: TVertScrollBox
+      Align = Client
+      Size.Width = 277.000000000000000000
+      Size.Height = 480.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'sbvConversaMensagemListaViewStyle1'
+      TabOrder = 0
+      OnResize = sbvConversaMensagemListaViewResize
+      OnViewportPositionChange = sbvConversaMensagemListaViewViewportPositionChange
+      OnVScrollChange = sbvConversaMensagemListaViewVScrollChange
+      Viewport.Width = 277.000000000000000000
+      Viewport.Height = 480.000000000000000000
+      object lytItems: TLayout
+        Position.X = 112.000000000000000000
+        Position.Y = 216.000000000000000000
+        TabOrder = 0
+        OnResized = lytItemsResized
+      end
+    end
+  end
+end

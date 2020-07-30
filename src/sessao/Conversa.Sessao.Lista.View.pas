@@ -19,7 +19,6 @@ uses
   FMX.TabControl,
   FMX.Types,
 
-  Conversa.Conexao.Banco_Dados,
   Conversa.Sessao.Lista.Controller,
   Conversa.Sessao.Item.View;
 
@@ -28,17 +27,15 @@ type
     lytConversaSessaoListaView: TLayout;
     rctgConversaSessaoListaView: TRectangle;
     lytSessoes: TLayout;
-    tbcSessoes: TTabControl;
   private
     { Private declarations }
     FSessaoListaController: TConversaSessaoListaController;
     FSessoes: TDictionary<Integer, TConversaSessaoItemView>;
   public
     { Public declarations }
-    constructor Create(AOwner: TComponent; AConexaoBancoDados: TConversaConexaoBancoDados); reintroduce; overload;
+    constructor Create(AOwner: TComponent); reintroduce; overload;
     destructor Destroy; override;
     procedure CarregarListaSessoesAtivas;
-    procedure IniciarSessao(iID: Integer);
   end;
 
 var
@@ -50,18 +47,14 @@ implementation
 
 { TConversaSessaoListaView }
 
-constructor TConversaSessaoListaView.Create(AOwner: TComponent; AConexaoBancoDados: TConversaConexaoBancoDados);
+constructor TConversaSessaoListaView.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
   Parent := TFmxObject(AOwner);
   Align := TAlignLayout.Client;
 
-  FSessaoListaController := TConversaSessaoListaController.Create(Self, AConexaoBancoDados);
+  FSessaoListaController := TConversaSessaoListaController.Create(Self);
   FSessoes := TDictionary<Integer, TConversaSessaoItemView>.Create;
-
-//  tbcSessoes.ColorScheme.TabBackground = Color.Transparent
-//  tbcSessoes.ColorScheme.TabBackground2 = Color.Transparent
-//  tbcSessoes.BackColor = Color.Transparent
 end;
 
 destructor TConversaSessaoListaView.Destroy;
@@ -73,22 +66,25 @@ end;
 procedure TConversaSessaoListaView.CarregarListaSessoesAtivas;
 begin
   FSessaoListaController.CarregarSessoesAtivas;
-  FSessaoListaController.qrySessoesAtivas.First;
-  while not FSessaoListaController.qrySessoesAtivas.Eof do
-  try
-    IniciarSessao(FSessaoListaController.qrySessoesAtivas.FieldByName('id').AsInteger);
-  finally
-    FSessaoListaController.qrySessoesAtivas.Next;
+  with FSessaoListaController.cdsSessoesAtivas do
+  begin
+    First;
+    while not Eof do
+    try
+      with TConversaSessaoItemView.Create(Self) do
+      try
+        Controller.Usuario_ID := FieldByName('id').AsFloat;
+        Controller.Usuario    := FieldByName('usuario').AsString;
+        Controller.Senha      := FieldByName('senha').AsString;
+        Name := 'TConversaSessaoItemView_'+ FieldByName('id').AsString;
+        ConversaListaView.CarregarConversas;
+      finally
+        lytConversaSessaoItemView.Parent := Self.lytSessoes;
+      end;
+    finally
+      Next;
+    end;
   end;
-end;
-
-procedure TConversaSessaoListaView.IniciarSessao(iID: Integer);
-var
-  tbciSessao: TTabItem;
-begin
-  tbciSessao := tbcSessoes.Add(TTabItem);
-  TConversaSessaoItemView.Create(tbciSessao).lytSessaoClient.Parent := tbciSessao;
-  tbcSessoes.ActiveTab := tbciSessao;
 end;
 
 end.

@@ -100,7 +100,6 @@
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <SanitizedProjectName>Conversa</SanitizedProjectName>
         <DCC_DcpOutput>.\deploy\$(Platform)\dcp\</DCC_DcpOutput>
-        <DCC_UnitSearchPath>.\src\dispositivo\lib;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;IndyIPCommon;RESTComponents;bindcompdbx;DBXInterBaseDriver;IndyIPServer;IndySystem;tethering;fmxFireDAC;FireDAC;bindcompfmx;FireDACSqliteDriver;ibmonitor;FMXTee;soaprtl;DbxCommonDriver;FmxTeeUI;ibxpress;fmx;FireDACIBDriver;xmlrtl;soapmidas;ibxbindings;rtl;DbxClientDriver;CustomIPTransport;dbexpress;IndyCore;bindcomp;dsnap;FireDACCommon;IndyIPClient;RESTBackendComponents;soapserver;dbxcds;bindengine;CloudService;dsnapxml;dbrtl;IndyProtocols;FireDACCommonDriver;inet;$(DCC_UsePackage)</DCC_UsePackage>
@@ -229,11 +228,6 @@
             <Form>ConversaBatePapoView</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="src\conexao_basedados\Conversa.Conexao.Banco_Dados.pas">
-            <Form>ConversaConexaoBancoDados</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="src\lista\Conversa.Lista.Controller.pas">
             <Form>ConversaListaController</Form>
             <FormType>dfm</FormType>
@@ -244,12 +238,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="src\dispositivo\Conversa.Dispositivo.Controller.pas">
-            <Form>ConversaDispositivoController</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="src\dispositivo\lib\FMX.ZDeviceInfo.pas"/>
         <DCCReference Include="src\sessao\Conversa.Sessao.Lista.Controller.pas">
             <Form>ConversaSessaoListaController</Form>
             <FormType>dfm</FormType>
@@ -265,6 +253,29 @@
         </DCCReference>
         <DCCReference Include="src\batepapo\Conversa.BatePapo.Controller.pas">
             <Form>ConversaBatePapoController</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\mensagem\Conversa.Mensagem.Lista.View.pas">
+            <Form>ConversaMensagemListaView</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="src\mensagem\Conversa.Mensagem.Item.Base.Frame.pas">
+            <Form>ConversaMensagemItemBaseFrame</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="src\mensagem\Conversa.Mensagem.Item.Texto.Frame.pas">
+            <Form>ConversaMensagemItemTextoFrame</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="biblioteca\Conversa.DataSet.pas"/>
+        <DCCReference Include="biblioteca\Conversa.WebSocket.pas"/>
+        <DCCReference Include="biblioteca\Conversa.Comando.pas"/>
+        <DCCReference Include="biblioteca\Conversa.Consulta.pas"/>
+        <DCCReference Include="src\sessao\Conversa.Sessao.Item.Controller.pas">
+            <Form>ConversaSessaoItemController</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -310,6 +321,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="deploy\Win32\Conversa.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Conversa.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="deploy\Win32\Conversa.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>Conversa.exe</RemoteName>
                         <Overwrite>true</Overwrite>
